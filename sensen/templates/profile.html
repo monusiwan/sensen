@@ -1,0 +1,64 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+
+{% block content %}
+<style>
+    p {
+        font-family: 'Times New Roman', Times, serif;
+        color: gray;
+    }
+    table{
+        font-family: 'Times New Roman', Times, serif;
+    }
+    tr{
+        color: gray;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Profile Information</h3>
+            <hr>
+            <p> <span>Username: </span>{{author.user.username}}</p>
+            <p>Email:{{author.user.email}}</p><hr>
+            <div>
+                <a href="{% url 'blog' %}" class="btn btn-success">Add More blogs</a>
+                <a href="{% url 'show' %}" class="btn btn-info">View Blog</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h4>Blog Details</h4> <hr>
+            <table class="table">
+                <thead>
+                    <tr style="background-color: lavender">
+                        <th>S.No</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in order %}
+                    <tr>
+                        <td scope="row">{{forloop.counter}}</td>
+                        <td><a href="">{{o.title}}</a></td>
+                        <td>{{o.author_name}}</td>
+                        <td>
+                            <a href="{% url 'delete' o.id %}" class="btn text-secondary px-0">
+                                <i class='far fa-trash-alt text-danger'><small></small></i>
+                            </a> &nbsp;
+                            <a href="{% url 'blog' %}"><i class="fa fa-edit text-dark"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    {% endblock content %}

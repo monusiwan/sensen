@@ -1,0 +1,52 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+
+{% block content %}
+<style>
+    a {
+        color: black;
+    }
+</style>
+<div class="container">
+    <h1>Welcome to our Django Mini Blog</h1>
+    <hr>
+    <center><h3>List Of Blogs</h3>
+        <p style="color: green;">NOTE: If you want to add more blogs then need to create an account first......</p>
+        <hr> <br> <br> <br>
+        <form class="d-flex" action="{% url 'search' %}" method="get">
+            <input class="form-control me-2 text-center float-right" style="width: 30%; background-color: gainsboro;" type="search"
+                placeholder="Search Your Blog Here" name="keyword" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </center>
+
+    <br> <br> <br>
+    <table class="table">
+        <thead>
+            <tr style="background-color: lavender;">
+                <th>S.No</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Uploaded On</th>
+                <th>Author Name </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in blog_list %}
+            <tr>
+                <td scope="row"><a href="">{{forloop.counter}}</a></td>
+                <td><a href="{% url 'blogdetail' i.slug %}"><img src="{{i.image.url}}" style="height: 75px; width: 55px; border-radius: 50%; " alt=""></a></td>
+                <td><a href="{% url 'blogdetail' i.slug %}">{{i.title}} <span class="badge bg-danger">{{i.view_count}}</span></a></td>
+                <td>{{i.created_date}} ({{i.created_date|timesince}}) ago....</td>
+                <td style="font-family: 'Times New Roman', Times, serif; color: rgb(238, 76, 184);">{{i.author_name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

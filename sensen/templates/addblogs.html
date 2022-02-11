@@ -1,0 +1,28 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Add New Blogs
+{% endblock title %}
+
+
+{% block content %}
+
+<center>
+    <table>
+        <p style="font-family: 'Times New Roman', Times, serif;"><big>Add New Blogs Here</big></p>
+        <hr>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{b}}
+    </table>
+    <div>
+        <button type="submit" class="btn btn-success text-center">Add
+            Blogs</button>
+        <a href="{% url 'show' %}" class="btn btn-warning">View Blogs</a>
+    </div>
+    </form>
+    </form>
+    </table>
+</center>
+
+{% endblock content %}

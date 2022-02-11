@@ -1,0 +1,55 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Blog List |Sensen
+{% endblock title %}
+
+
+{% block content %}
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+<center>
+    <h3>All Blogs</h3>
+    <hr>
+</center>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <table class="table">
+        <thead>
+            <tr style="background-color: lavender; font-family: 'Times New Roman', Times, serif;">
+                <th>S.No</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Author Name</th>
+                <th>Date of upload</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in img %}
+            <tr style="font-family: 'Times New Roman', Times, serif;">
+                <td scope="row">{{forloop.counter}}</td>
+                <td style="border-radius: 50%;"><a href="{% url 'blogdetail' i.slug %}"><img src="{{i.image.url}}"
+                    style="height: 70px; width: 50px; border-radius: 55%;"></a></td>
+                <td><a href="{% url 'blogdetail' i.slug %}">{{i.title}}</a></td>
+                <td>{{i.author_name}}</td>
+                <td>{{i.created_date}} ({{i.created_date|timesince}}) ago...</td>
+                <td>
+                    <a href="{% url 'delete' i.id %}" class="btn text-secondary px-0">
+                        <i class='far fa-trash-alt text-danger'><small></small></i>
+                    </a> &nbsp;
+                    <a href="{% url 'blog' %}"><i class="fa fa-edit text-dark"></i></a>
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+</form> 
+</table>
+
+{% endblock content %}

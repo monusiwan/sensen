@@ -1,0 +1,29 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Login | Sensen
+{% endblock title %}
+
+
+{% block content %}
+<br>
+<br>
+<style>
+    li{
+        color: red;
+    }
+</style>
+<center>
+    <table>
+        <p><big>Login Here</big></p>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{fm}}
+    </table>
+    <button type="submit" class="btn btn-info">Login</button> <p>Forget password ..?? <a href="{% url 'forgetpassword' %}">Reset now</a></p>
+    </form>
+
+</center>
+
+{% endblock content %}

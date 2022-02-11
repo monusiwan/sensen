@@ -1,0 +1,32 @@
+{% extends 'base1.html' %}
+
+
+{% block title %}
+    {{blog.title}}
+{% endblock title %}
+    
+{% block content %}
+    <div class="container">
+        <h3 style="font-family: 'Times New Roman', Times, serif; color: grey;">Blog: {{blog.title}}</h3><hr>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{blog.image.url}}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h4 style="font-family: 'Times New Roman', Times, serif; color: grey;">Blog Name: {{blog.title}}</h4>
+                <p style="color: grey;"> (Viewed : {{blog.view_count}} times)</p>        
+                <h4 style="font-family: 'Times New Roman', Times, serif; color: grey;">Author Name: {{blog.author_name}}</h4>
+                <p style="font-family: 'Times New Roman', Times, serif; color: grey;">Uploaded on: {{blog.created_date}} ({{blog.created_date|timesince}}) ago...</p>
+                <hr>
+
+
+                
+                <h3 class="text-dark text-center" style="font-family: 'Times New Roman', Times, serif;">Body <br></h3>
+                    <p class="text-secondary" style="font-family: 'Times New Roman', Times, serif;">{{blog.blog_body}}</p>
+                <hr>
+                <p></p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

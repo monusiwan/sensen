@@ -1,0 +1,17 @@
+{% extends 'base1.html' %}
+
+
+{% block title %}
+Add New Blogs | Sensen
+{% endblock title %}
+
+
+{% block content %}
+
+<center>
+    <table class="text-center">
+        <br> <br> <br>
+        <a href="{% url 'blog' %}" class="btn btn-success">Add More Blogs</a> &nbsp; <a href="{% url 'show' %}" class="btn btn-warning">Show Blogs</a>
+</center>
+<hr><br>
+{% endblock content %}

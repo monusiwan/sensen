@@ -1,0 +1,27 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Register | Sensen
+{% endblock title %}
+
+
+{% block content %}
+
+<center>
+    <table>
+        <form action="" method="post">
+            {% csrf_token %}
+            <br>
+            <br>
+            <br>
+            <h3>Register New User</h3>
+            <hr>
+            {{a}}
+            {{u}}
+                
+    </table>
+    <button type="submit" class="btn btn-success">Register</button>
+    </form>
+</center>
+
+{% endblock content %}
